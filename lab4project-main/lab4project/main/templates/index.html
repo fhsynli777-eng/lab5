@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foodieland</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            border-bottom: 1px solid #eee;
+        }
+
+        header h1 {
+            font-family: "Playfair Display", serif;
+            font-style: italic;
+            font-weight: 700;
+            font-size: 32px;
+        }
+
+        header h1 span {
+            color: #e94e1b;
+        }
+
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #5ab67a;
+        }
+
+        .social {
+            display: flex;
+            gap: 30px;
+        }
+
+        .social a {
+            color: #333;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            color: #5ab67a;
+        }
+
+        /* === CATEGORIES === */
+        .categories {
+            margin: 60px auto;
+            max-width: 1100px;
+            padding: 0 30px;
+            text-align: center;
+        }
+
+        .categories-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .categories-header h2 {
+            font-size: 34px;
+            font-weight: 700;
+        }
+
+        .view-btn {
+            background-color: #e9f9ff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            color: #000;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .view-btn:hover {
+            background-color: #d7f2ff;
+        }
+
+        .cat-list {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 25px;
+            
+        }
+
+        .cat-item {
+            width: 150px;
+            height: 160px;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .cat-item p {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #222;
+        }
+
+        .cat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* === RECIPES === */
+        .recipes {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .recipes h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .recipes p {
+            color: #777;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            padding: 40px 80px;
+        }
+
+        .card {
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* === SUBSCRIBE SECTION === */
+        .subscribe-section {
+            background-color: #e9f9ff;
+            border-radius: 40px;
+            padding: 80px 40px;
+            margin: 80px auto;
+            max-width: 1200px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subscribe-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .subscribe-section p {
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .subscribe-form {
+            display: inline-flex;
+            background: #fff;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .subscribe-form input {
+            padding: 15px 25px;
+            border: none;
+            outline: none;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        .subscribe-form button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #333;
+        }
+
+        .subscribe-image {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            opacity: 0.9;
+        }
+
+        /* === BOTTOM HEADER === */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 80px;
+            background-color: #fff;
+        }
+
+        .logo h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #e94e1b;
+        }
+
+        .logo p {
+            font-size: 16px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .nav-links ul {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #5ab67a;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 0 80px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #eee;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 992px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cards {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Foodieland<span>.</span></h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </header>
+
+    <section class="categories">
+        <div class="categories-header">
+            <h2>Categories</h2>
+            <button class="view-btn">View All Categories</button>
+        </div>
+        <div class="cat-list">
+            <div class="cat-item" style="background: linear-gradient(to bottom, #ffffff, #f3f8f3);">🍙<p>Breakfast</p>
+            </div>
+            <div class="cat-item" style="background: linear-gradient(to bottom, #ffffff, #eaf8ea);">🥬<p>Vegan</p>
+            </div>
+            <div class="cat-item" style="background: linear-gradient(to bottom, #ffffff, #fdecec);">🥩<p>Meat</p>
+            </div>
+            <div class="cat-item" style="background: linear-gradient(to bottom, #ffffff, #fff7ec);">🍰<p>Dessert</p>
+            </div>
+            <div class="cat-item" style="background: linear-gradient(to bottom, #ffffff, #fff3e7);">🥪<p>Lunch</p>
+            </div>
+            <div class="cat-item" style="background: linear-gradient(to bottom, #ffffff, #f8ecec);">🍫<p>Chocolate</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="recipes">
+        <h2>Simple and tasty recipes</h2>
+        <p>Learn how to make delicious meals with easy-to-follow steps and simple ingredients.</p>
+    </section>
+
+    <div class="cards">
+        <div class="card">
+            <img src="https://biteswithbri.com/wp-content/uploads/2021/02/HamburgerPattyRecipe04.jpg" />
+            <div class="card-content">
+                <h3>Big and Juicy Wagyu Beef Cheeseburger</h3>
+                <div class="card-footer"><span>30 mins</span><span>Snack</span></div>
+            </div>
+        </div>
+        <div class="card">
+            <img
+                src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Salmon-Supreme-with-Ginger-Soy-Sauce_EXPS_THD18_42076_B08_02_8b-1.jpg" />
+            <div class="card-content">
+                <h3>Fresh Lime Roasted Salmon with Ginger Sauce</h3>
+                <div class="card-footer"><span>20 mins</span><span>Main</span></div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://cookieandkate.com/images/2013/06/buckwheat-pancakes-recipe-2-548x824.jpg" />
+            <div class="card-content">
+                <h3>Strawberry Oatmeal Pancake with Honey Syrup</h3>
+                <div class="card-footer"><span>25 mins</span><span>Breakfast</span></div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.recipeboy.com/wp-content/uploads/2023/09/Chicken-Apple-Salad-4.jpeg.webp" />
+            <div class="card-content">
+                <h3>Fresh and Healthy Mixed Mayonnaise Salad</h3>
+                <div class="card-footer"><span>15 mins</span><span>Healthy</span></div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://th.bing.com/th/id/R.192add679c4d55375200ec910276d320?rik=I8gHCnaUBX77Pg&pid=ImgRaw&r=0" />
+            <div class="card-content">
+                <h3>Chicken Meatballs with Cream Cheese</h3>
+                <div class="card-footer"><span>40 mins</span><span>Dinner</span></div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.livinglou.com/wp-content/uploads/2023/02/one-pot-chicken-and-rice-1-500x500.jpeg" />
+            <div class="card-content">
+                <h3>The Best Easy One Pot Chicken and Rice</h3>
+                <div class="card-footer"><span>35 mins</span><span>Lunch</span></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="subscribe-section">
+        <div class="subscribe-container">
+            <h2>Deliciousness to your inbox</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Your email address..." required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <img src="https://cdn-icons-png.flaticon.com/512/859/859270.png" alt="Salad" class="subscribe-image">
+    </section>
+
+    <header class="main-header">
+        <div class="logo">
+            <h1>Foodieland<span>.</span></h1>
+            <p>Lorem ipsum dolor sit amet, consectetuisicing elit,</p>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr class="divider" />
+    <footer>© 2025 Foodieland. All rights reserved.</footer>
+</body>
+
+</html>
